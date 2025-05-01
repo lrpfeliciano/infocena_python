@@ -6,3 +6,6 @@ from django.shortcuts import render
 def index(request):
     return HttpResponse("Olá Mundo! Agora é web")
 
+def listar_lojas(request):
+    return render(request, 'listar_lojas.html')
+
