@@ -22,10 +22,23 @@
             <tr>
                 <td>{{ l.nome }}</td>
                 <td>{{ l.telefone }}</td>
-                <td>Alterar Excluir</td>
+                <td><a href="{% url 'alterar_loja' l.id %}">
+                        Alterar
+                    </a> 
+                    <!---->
+                    <a href="{% url 'excluir_loja' l.id %}"
+                       onclick="return excluir()">                    
+                        Excluir
+                    </a>
+                </td>
             </tr>    
             {% endfor %}
         </tbody>
     </table>
 </body>
+<script>
+    function excluir(){
+        return confirm("Deseja excluir?");
+    }
+</script>
 </html>

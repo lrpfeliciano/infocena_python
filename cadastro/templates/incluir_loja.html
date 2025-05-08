@@ -13,6 +13,12 @@
         de 
         cadastro
     -->
+    {% if mensagem %}
+        <script>
+            var msg = '{{ mensagem }}';
+            alert(msg);
+        </script>
+    {% endif %}
     <form method="post">
         {{ formulario }}
         {% csrf_token %}
