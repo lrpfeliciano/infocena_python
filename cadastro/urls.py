@@ -14,6 +14,11 @@ urlpatterns = [
             name='alterar_loja'),   
 
     path('excluir_loja/<int:codigo>', views.excluir_loja,
-            name='excluir_loja'),          
+            name='excluir_loja'), 
+
+    path('listar_produtos', views.listar_produtos,
+           name='listar_produtos'),
+    path('incluir_produto', views.incluir_produto,
+           name='incluir_produto'),         
 ]
 

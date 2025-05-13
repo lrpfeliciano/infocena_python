@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from cadastro.forms import LojaForm
-from .models import Loja
+from cadastro.forms import LojaForm, ProdutoForm
+from .models import Loja, Produto
 from django.contrib import messages
 from django.db.models.functions import Lower
 
@@ -48,3 +48,18 @@ def excluir_loja(request, codigo):
 
     return redirect('listar_lojas')
 
+def listar_produtos(request):
+    produtos = Produto.objects.order_by(Lower('nome'))
+    return render(request, 'listar_produtos.html',
+                  {'produtos':produtos})
+
+def incluir_produto(request):
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_produtos')
+    form = ProdutoForm()
+    return render(request, 'incluir_produto.html',
+                  {'formulario': form})
+    
