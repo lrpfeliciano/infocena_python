@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'interna.html' %}
+
+{% block content %}
     <h1>Produtos</h1>
     <a href="{% url 'incluir_produto' %}">Incluir</a>
 
@@ -22,10 +17,17 @@
             <tr>
                 <td>{{ p.nome }}</td>
                 <td>{{ p.preco }}</td>
-                <td> Alterar Excluir</td>
+                <td>
+                    <a href="{% url 'alterar_produto' p.id %}">
+                        Alterar
+                    </a>
+                    <a href="{% url 'excluir_produto' p.id %}"
+                        onclick="return excluir()">
+                        Excluir
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+{% endblock %}

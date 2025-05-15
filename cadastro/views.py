@@ -63,3 +63,23 @@ def incluir_produto(request):
     return render(request, 'incluir_produto.html',
                   {'formulario': form})
     
+def alterar_produto(request, codigo):
+    produto = Produto.objects.get(id=codigo)
+
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST, instance=produto)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_produtos')
+    form = ProdutoForm(instance=produto)
+    return render(request, "incluir_produto.html",
+                  {'formulario': form})
+
+def excluir_produto(request, codigo):
+    produto = Produto.objects.get(id=codigo)
+
+    Produto.delete(produto)
+    return redirect('listar_produtos')
+
+def area_interna(request):
+    return render(request, 'area_interna.html')

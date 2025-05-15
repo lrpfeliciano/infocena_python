@@ -19,6 +19,15 @@ urlpatterns = [
     path('listar_produtos', views.listar_produtos,
            name='listar_produtos'),
     path('incluir_produto', views.incluir_produto,
-           name='incluir_produto'),         
+           name='incluir_produto'), 
+    path('alterar_produto/<int:codigo>', 
+                views.alterar_produto,
+                name='alterar_produto'),               
+    path('excluir_produto/<int:codigo>', 
+                views.excluir_produto,
+                name='excluir_produto'),    
+
+    path('area_interna', views.area_interna,
+         name='area_interna'),    
 ]
 

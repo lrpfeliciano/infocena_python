@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping InfoCena</title>
-</head>
-<body>
+{% extends 'principal.html' %}
+
+{% block content %}
     <h1>Bem vindo ao shopping</h1>
     
-    <a href="{% url 'listar_lojas' %}">
-        Cadastro de Lojas
-    </a>
-
-    <a href="{% url 'listar_produtos' %}">
-        Cadastro de Produtos
-    </a>
-</body>
-</html>
+{% endblock %}
