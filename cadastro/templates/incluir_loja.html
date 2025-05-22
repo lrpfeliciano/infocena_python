@@ -14,16 +14,22 @@
             alert(msg);
         </script>
     {% endif %}
+    {% load django_bootstrap5 %}
     <form method="post">
-        {{ formulario }}
+        {% bootstrap_form formulario %}
         {% csrf_token %}
-        <input type="submit" value="Gravar" />
-        <input type="reset" value="Limpar" />
+        <input type="submit" value="Gravar" class="btn btn-primary" />
+        <input type="reset" value="Limpar" class="btn btn-secondary" />
     </form>
 
     <script>
         document.addEventListener("DOMContentLoaded", function(){
-      
+
+/*            
+            document.getElementById("id_nome").removeAttribute("placeholder");
+            document.getElementById("id_telefone").removeAttribute("placeholder");
+            document.getElementById("id_numero").removeAttribute("placeholder");
+ */     
             var mailMudar = document.getElementById('id_nome');
             var pass = document.getElementById('id_telefone');
       

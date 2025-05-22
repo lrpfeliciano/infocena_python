@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área interna</title>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
 </head>
 <body>
-    {% include 'menu_interno.html' %}
-    {% block content %}
-    {% endblock %}
+    <div class="container">
+        {% include 'menu_interno.html' %}
+        {% block content %}
+        {% endblock %}
+    </div>
 
 </body>
 <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        var campos = document.getElementsByTagName("input");
+        for (i=0; i < campos.length; i++){
+            campos[i].removeAttribute("placeholder");
+        }
+    });
+
     function excluir(){
         return confirm("Deseja excluir?");
     }
 </script>
+{% bootstrap_javascript %}
 </html>

@@ -6,8 +6,10 @@ from cadastro.models import Loja, Produto
 class LojaForm(forms.ModelForm):
     nome = forms.CharField(label='Nome *',
                            error_messages={
-                               'required': 'Campo Obrigatório'
-                           })
+                               'required': 'Campo Obrigatório',
+                       
+                           } 
+                           )
     telefone = forms.CharField(label='Telefone *',
                            error_messages={
                                'required': 'Campo Obrigatório'
@@ -15,6 +17,13 @@ class LojaForm(forms.ModelForm):
     class Meta:
         model = Loja
         fields = '__all__'
+        widgets = {
+            'nome': forms.TextInput(attrs={})
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['nome'].widget.attrs.pop('placeholder', None)
 
 class ProdutoForm(forms.ModelForm):
     nome = forms.CharField(label="Nome do Produto ")
