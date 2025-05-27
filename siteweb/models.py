@@ -6,3 +6,9 @@ class MotivoContato(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class FaleConosco(models.Model):
+    nome = models.CharField(max_length=100)
+    email = models.EmailField()
+    motivoContato = models.ForeignKey(MotivoContato,
+                            on_delete=models.DO_NOTHING)
