@@ -20,11 +20,15 @@ class LojaForm(forms.ModelForm):
 
 
 class ProdutoForm(forms.ModelForm):
-    nome = forms.CharField(label="Nome do Produto ")
+    #nome = forms.CharField(label="Nome do Produto ")
     preco = forms.DecimalField(label="Preço ")
+    
     destaque = forms.BooleanField(label="Aparecer no site")
     class Meta:
         model = Produto
         fields = '__all__'
-    
+        labels = {
+            'nome': 'Produto a ser comercializado',
+            'loja' : 'Lojista'
+        }    
     
